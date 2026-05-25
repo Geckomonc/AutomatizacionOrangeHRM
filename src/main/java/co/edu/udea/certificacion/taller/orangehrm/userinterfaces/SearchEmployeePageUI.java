@@ -13,4 +13,7 @@ public class SearchEmployeePageUI {
 
     public static final Target EMPLOYEE_RESULT_BY_ID = Target.the("employee result by id")
             .locatedBy("//div[contains(@class,'oxd-table-card')]//*[normalize-space()='{0}']");
+
+    public static final Target SEARCH_RESULT_MESSAGE = Target.the("search result message")
+            .locatedBy("//*[contains(@class,'oxd-text') and normalize-space()='{0}']");
 }

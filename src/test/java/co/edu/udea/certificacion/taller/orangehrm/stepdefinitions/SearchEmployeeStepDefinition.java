@@ -2,10 +2,12 @@ package co.edu.udea.certificacion.taller.orangehrm.stepdefinitions;
 
 import co.edu.udea.certificacion.taller.orangehrm.models.UserModel;
 import co.edu.udea.certificacion.taller.orangehrm.questions.IsEmployeeFoundById;
+import co.edu.udea.certificacion.taller.orangehrm.questions.IsSearchResultMessageDisplayed;
 import co.edu.udea.certificacion.taller.orangehrm.tasks.GoToEmployeeListTask;
 import co.edu.udea.certificacion.taller.orangehrm.tasks.LoginOrangePageTask;
 import co.edu.udea.certificacion.taller.orangehrm.tasks.OpenWebOrangeTask;
 import co.edu.udea.certificacion.taller.orangehrm.tasks.SearchEmployeeByIdTask;
+import co.edu.udea.certificacion.taller.orangehrm.userinterfaces.SearchEmployeePageUI;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -13,9 +15,11 @@ import io.cucumber.java.en.When;
 import net.serenitybdd.annotations.Managed;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
+import net.serenitybdd.screenplay.waits.WaitUntil;
 import org.openqa.selenium.WebDriver;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 import static org.hamcrest.Matchers.is;
 
 public class SearchEmployeeStepDefinition {
@@ -49,5 +53,15 @@ public class SearchEmployeeStepDefinition {
     @Then("The employee with id {string} should be displayed in the results")
     public void theEmployeeWithIdShouldBeDisplayedInTheResults(String employeeId) {
         user.should(seeThat(IsEmployeeFoundById.with(employeeId), is(true)));
+    }
+
+    @Then("A {string} message should be displayed")
+    public void aMessageShouldBeDisplayed(String expectedMessage) {
+        user.attemptsTo(
+                WaitUntil.the(SearchEmployeePageUI.SEARCH_RESULT_MESSAGE.of(expectedMessage), isVisible())
+                        .forNoMoreThan(15).seconds()
+        );
+
+        user.should(seeThat(IsSearchResultMessageDisplayed.withMessage(expectedMessage), is(true)));
     }
 }
