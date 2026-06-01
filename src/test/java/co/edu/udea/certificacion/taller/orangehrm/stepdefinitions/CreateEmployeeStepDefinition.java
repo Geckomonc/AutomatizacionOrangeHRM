@@ -11,6 +11,7 @@ import co.edu.udea.certificacion.taller.orangehrm.tasks.GoToAddEmployeeTask;
 import co.edu.udea.certificacion.taller.orangehrm.tasks.LoginOrangePageTask;
 import co.edu.udea.certificacion.taller.orangehrm.tasks.OpenWebOrangeTask;
 import co.edu.udea.certificacion.taller.orangehrm.tasks.SetEmployeeIdTask;
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -109,5 +110,10 @@ public class CreateEmployeeStepDefinition {
         );
 
         user.should(seeThat(IsEmployeeValidationMessageVisible.withMessage(expectedMessage), is(true)));
+    }
+
+    @After
+    void closeBrowser() {
+        driver.
     }
 }

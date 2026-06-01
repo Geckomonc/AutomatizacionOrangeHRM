@@ -2,7 +2,6 @@ package co.edu.udea.certificacion.taller.orangehrm.stepdefinitions;
 
 import co.edu.udea.certificacion.taller.orangehrm.models.UserModel;
 import co.edu.udea.certificacion.taller.orangehrm.questions.IsDashboardVisible;
-import co.edu.udea.certificacion.taller.orangehrm.questions.IsTheUsernameVisible;
 import co.edu.udea.certificacion.taller.orangehrm.tasks.LoginOrangePageTask;
 import co.edu.udea.certificacion.taller.orangehrm.tasks.OpenWebOrangeTask;
 import io.cucumber.java.Before;

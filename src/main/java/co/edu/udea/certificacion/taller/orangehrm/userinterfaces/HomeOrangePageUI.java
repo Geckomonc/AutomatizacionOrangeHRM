@@ -8,9 +8,6 @@ public class HomeOrangePageUI {
     public static final Target DASHBOARD_TITLE = Target.the("dashboard title")
             .located(By.xpath("//h6[normalize-space()='Dashboard']"));
 
-    public static final Target USER_TITTLE = Target.the("user tittle")
-            .located(By.xpath("//p[contains(@class,'oxd-userdropdown-name')]"));
-
     public static final Target PIM_BUTTON = Target.the("PIM button")
             .located(By.xpath("//span[normalize-space()='PIM']"));
 
